@@ -7,13 +7,14 @@ Created by Joshua Shapiro on 2008-08-11.
 Copyright (c) 2008 Princeton University. All rights reserved.
 """
 
+from __future__ import division 
 from numpy import *
 import itertools
 import operator
 
 
 def generateBreaksPoisson(cM = 200):
-    breaks = random.uniform(size = random.poisson(cM/100))
+    breaks = random.uniform(size = random.poisson(cM/100.0))
     breaks.sort()
     return breaks
 

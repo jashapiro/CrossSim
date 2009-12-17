@@ -7,7 +7,9 @@ Created by Joshua Shapiro on 2008-08-11.
 Copyright (c) 2008 Princeton University. All rights reserved.
 """
 
+
 import Individual
+from __future__ import division
 from numpy import *
 import itertools
 

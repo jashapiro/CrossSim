@@ -9,7 +9,7 @@ Copyright (c) 2008 Princeton University. All rights reserved.
 
 import sys
 import os
-
+from __future__ import division
 
 class GeneticMap(object):
   """Defines a relationship between the physical and genetic maps for each marker position"""

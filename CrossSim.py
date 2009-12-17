@@ -10,6 +10,7 @@ Copyright (c) 2008 Princeton University. All rights reserved.
 
 import sys
 import os
+from __future__ import division
 import optparse
 from numpy import *
 import Crosses
