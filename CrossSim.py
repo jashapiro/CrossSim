@@ -4,14 +4,15 @@
 CrossSim.py
 
 Simulates crosses among haploid individuals.  8 parent crosses with various crossing schemes.
-Created by Joshua Shapiro on 2008-10-06.
-Copyright (c) 2008 Princeton University. All rights reserved.
-"""
 
+Created by Joshua Shapiro on 2008-10-06.
+"""
+from __future__ import division
 import sys
 import os
-from __future__ import division
 import optparse
+
+
 from numpy import *
 import Crosses
 import Individual
@@ -45,7 +46,7 @@ def getOptions():
 class SimStats(object):
   """structure for holding simulation statistics, filled dynamically"""
   def __init__(self):
-    super(SimStats, self).__init__()
+    pass
     
 
 def main():
@@ -128,10 +129,10 @@ def main():
       anyMissing += hasMissing
       anyLow += hasLow
         
-    stats.missing = missingSegment/float(len(freqs) * len(parents))
-    stats.low = lowSegment/float(len(freqs) * len (parents))
-    stats.anyMissing = anyMissing/float(len(freqs))
-    stats.anyLow = anyLow/float(len(freqs))
+    stats.missing = missingSegment/len(freqs) * len(parents)
+    stats.low = lowSegment/len(freqs) * len (parents)
+    stats.anyMissing = anyMissing/len(freqs)
+    stats.anyLow = anyLow/len(freqs)
     
     allStats.append(stats)
   

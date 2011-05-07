@@ -4,13 +4,13 @@
 Chromosomes.py
 
 Created by Joshua Shapiro on 2008-08-11.
-Copyright (c) 2008 Princeton University. All rights reserved.
 """
-
 from __future__ import division 
-from numpy import *
 import itertools
 import operator
+
+
+from numpy import *
 
 
 def generateBreaksPoisson(cM = 200):

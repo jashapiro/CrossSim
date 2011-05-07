@@ -4,13 +4,13 @@
 Individual.py
 
 Created by Joshua Shapiro on 2008-08-11.
-Copyright (c) 2008 Princeton University. All rights reserved.
 """
-from Chromosomes import *
 from __future__ import division
 import operator
 import itertools
+
 from numpy import *
+from Chromosomes import *
 
 def newChromosomes(parent, n = None, cM = 200, chrNames=None, recombMethod = "poisson"):
     """Generates a list of n chromosomes, each with length cM (possibly a list, in which case n is optional)"""
@@ -102,7 +102,6 @@ class Diploid(object):
 class Haploid(object):
     """Haploid individual, monoecious"""
     def __init__(self, name = None, chromosomes = None, newChr = None, cM = 200, chrNames = None):
-        super(Haploid, self).__init__()
         self.name = name
         if (chromosomes == None and newChr == None) or (chromosomes != None and newChr != None):
             raise ValueError, "Must specify only one of either the number of new Chromosomes to add or a list of the chromosomes themselves."
