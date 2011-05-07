@@ -1,0 +1,12 @@
+CrossSim  
+-Joshua Shapiro
+
+A system for simulating genetic crosses. 
+
+The functionality is pretty basic, but it supports haploid or diploid individuals, tracking an arbitrary number of chromosomes. 
+
+Recombination is modeled without interference, and all coordinates are on the genetic map. 
+
+TODO:
+Add ability to convert genetic map to physical.
+Add possibility of mutations during the cross.
