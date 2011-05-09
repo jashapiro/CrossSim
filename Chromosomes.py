@@ -21,21 +21,21 @@ def generateBreaksPoisson(cM = 200):
 
 class Chromosome(object):
     """Chromosome object which contains information on parentage of segments"""
-    def __init__(self,  cM=200, name=None, segments=None, newParent=None, recombMethod = "poisson"):
+    def __init__(self,  cM=200, name=None, segments=None, newParent=None, interference = "absent"):
         super(Chromosome, self).__init__()
         self.name = name
         self.cM = cM
         self.segments = segments
         #segments are lists of tuples where the first position is the start location, the second is the parent of origin
-        self.recombMethod = recombMethod
+        self.interference = interference
         
         if newParent != None:
             if self.segments != None:
                 raise ValueError, "Can't set segment information in a new parent"
             self.segments = [(0,newParent)]
         
-        if not (self.recombMethod in ["worm", "poisson"]):
-          raise ValueError, "Recombination method must be one of 'worm' or 'poisson'."
+        if not (self.interference in ["complete", "absent"]):
+          raise ValueError, "Interference must be one of 'complete' or 'absent'."
         
     def getParentAtLocation(self, loc):
         """gets the Parental Identity for a chromosomal location"""
@@ -82,7 +82,7 @@ class Chromosome(object):
           parents[n] = self.segments[i-1][1]
         return parents
     
-    def recombine(self, mate, method = None):
+    def recombine(self, mate, interference = None):
         if self.name != mate.name:
             raise ValueError, "Chromosome names are not the same; can't recombine between them." 
         if method == None:
