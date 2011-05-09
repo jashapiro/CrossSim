@@ -37,6 +37,23 @@ class Chromosome(object):
         if not (self.interference in ["complete", "absent"]):
           raise ValueError, "Interference must be one of 'complete' or 'absent'."
         
+    def __eq__(self, other):
+      if  isinstance(other, Chromosome):
+        if self.name != other.name:
+          return False
+        if len(self.segments) != len(other.segments):
+          return False
+        for s1, s2 in itertools.izip(self.segments, other.segments):
+          if s1 != s2: return False
+        return True  
+      else: return NotImplemented
+    
+    def __ne__(self, other):
+      equal_result = self.__eq__(other)
+      if (equal_result is not NotImplemented):
+          return not equal_result
+      return NotImplemented
+    
     def getParentAtLocation(self, loc):
         """gets the Parental Identity for a chromosomal location"""
         if loc < 0 or loc > 1:
@@ -85,6 +102,11 @@ class Chromosome(object):
     def recombine(self, mate, interference = None):
         if self.name != mate.name:
             raise ValueError, "Chromosome names are not the same; can't recombine between them." 
+        if self == mate:
+          #shortcut: any recombinants would be identical anyway
+          return (Chromosome(name = self.name, cM = self.cM,  segments = self.segments), 
+                  Chromosome(name = self.name, cM = self.cM,  segments = self.segments))
+        
         if method == None:
           method = self.recombMethod
         
