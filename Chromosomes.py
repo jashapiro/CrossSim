@@ -93,12 +93,12 @@ class Chromosome(object):
         brokenSegments1 = list()
         brokenSegments2 = list()
         
-        if method == "poisson":
+        if interference == "absent":
           crossOvers = generateBreaksPoisson(self.cM)
-        elif method == "worm":
+        elif interference == "complete":
           crossOvers = random.uniform(size=1)
         else:
-          raise ValueError, "Recombination method must be one of 'worm' or 'poisson'."
+          raise ValueError, "Interference setting must be one of 'absent' or 'complete'."
         
         for crossOver in crossOvers:
             tempSeg = list()
