@@ -107,8 +107,8 @@ class Chromosome(object):
           return (Chromosome(name = self.name, cM = self.cM,  segments = self.segments), 
                   Chromosome(name = self.name, cM = self.cM,  segments = self.segments))
         
-        if method == None:
-          method = self.recombMethod
+        if interference == None:
+          interference = self.interference
         
         segments1 = list(self.segments)
         segments2 = list(mate.segments)
