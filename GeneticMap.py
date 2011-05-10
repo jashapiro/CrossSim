@@ -26,7 +26,7 @@ class GeneticMap(object):
     else:
       pass
     if physLength:
-      self.physLength = physLength:
+      self.physLength = physLength
     elif len(self.markers) > 0:
       physLength = self.markers[-1].bp
     else:
@@ -79,7 +79,7 @@ class AlleleMap(object):
     super(AlleleMap, self).__init__()
     self.map = alleleMap
     if self.map != None and  type(self.map) != type (dict()):
-      except(TypeError, "alleleMap must be a dictionary of dictionaries")
+      raise TypeError, "alleleMap must be a dictionary of dictionaries"
   
   def addMarker(self, marker, markerValue):
     if type(marker) == type(Marker()):
